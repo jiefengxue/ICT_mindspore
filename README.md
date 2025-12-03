@@ -1,6 +1,6 @@
 对昇思大模型平台上的ResNet模型进行改进，并提供给从checkpoint格式到OM格式的转换方法路径
 
-https://cloud-42a1a443-a84e-4296-9893-6a23322f6775.snt9b.xihe.mindspore.cn/lab/tree/
+参考为：https://xihe.mindspore.cn/training-projects/wujiacong/skin
 
 1.准备
 
@@ -15,22 +15,27 @@ https://cloud-42a1a443-a84e-4296-9893-6a23322f6775.snt9b.xihe.mindspore.cn/lab/t
 
 2.步骤
 
+解压
 unzip pifudata_Maker.zip
 
+训练 得到ONNX
 python train_med.py
 
+创建虚拟环境
 chmod +x setup_onnx_env.sh
 
 ./setup_onnx_env.sh
 
+激活
 source /home/mindspore/work/onnx_fix_env/bin/activate
 
+执行修复
 python fix_med.py 
 
+从ONNX到OM
 atc --model=./resnet50_fixed.onnx --framework=5 --soc_version=Ascend310B1 --output=res50_final
 
 
 3.参考
-
-https://cloud-42a1a443-a84e-4296-9893-6a23322f6775.snt9b.xihe.mindspore.cn/lab/tree/
+https://xihe.mindspore.cn/training-projects/wujiacong/skin
 
